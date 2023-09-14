@@ -5,7 +5,7 @@ RUN rm -rf /usr/share/nginx/html/*
 WORKDIR /etc/nginx
 
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-COPY ./build/ /usr/share/nginx/html/
+COPY build/ /usr/share/nginx/html/
 
 EXPOSE 80
 
