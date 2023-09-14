@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const baseUrl = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080';
+
+    const makeAPICall = async () => {
+        try {
+            const response = await fetch(`${baseUrl}/api`);
+            const data = await response.json();
+            console.log({ data });
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    useEffect(() => {
+        makeAPICall();
+    }, []);
+
+    return (
+        <div className="App">
+            <h1>123123</h1>
+        </div>
+    );
 }
 
 export default App;
+
